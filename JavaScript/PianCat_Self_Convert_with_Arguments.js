@@ -104,7 +104,7 @@ const ruleProviders = {
         "path": "./ruleset/SteamFix.list"
     },
     "GoogleFCM": {
-        "type": "http", "behavior": "classical", "interval": 86400, "format": "text",
+        "type": "http", "behavior": "classical", "format": "text", "interval": 86400,
         "path": "./ruleset/FirebaseCloudMessaging.list",
         "url": "https://cdn.jsdmirror.com/gh/PianCat/OverrideRuleset@master/RuleSet/FirebaseCloudMessaging.list",
     },
