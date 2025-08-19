@@ -54,9 +54,9 @@ function buildBaseLists({ landing, lowCost, countryInfo }) {
 
 const ruleProviders = {
     "ADBlock": {
-        "type": "http", "behavior": "domain", "format": "text", "interval": 86400,
-        "url": "https://adrules.top/adrules_domainset.txt",
-        "path": "./ruleset/ADBlock.txt"
+        "type": "http", "behavior": "domain", "format": "mrs", "interval": 86400,
+        "url": "https://adrules.top/adrules-mihomo.mrs",
+        "path": "./ruleset/ADBlock.mrs"
     },
     "SogouInput": {
         "type": "http", "behavior": "classical", "format": "text", "interval": 86400,
