@@ -39,7 +39,6 @@ function buildBaseLists({ landing, countryInfo }) {
     const defaultFallback = [];
     if (landing) defaultFallback.push("落地节点");
     defaultFallback.push(...countryGroupNames);
-    if (lowCost) defaultFallback.push("低倍率节点");
     // 可选是否加入 手动切换 / DIRECT；按容灾语义加入。
     defaultFallback.push("手动切换", "DIRECT");
 
@@ -268,8 +267,6 @@ function parseBool(value) {
     return false;
 }
 
-// 移除 hasLowCost 函数，因为我们不再需要低倍率节点功能
-
 function parseCountries(config) {
     const proxies = config.proxies || [];
     const ispRegex = /家宽|家庭|家庭宽带|商宽|商业宽带|星链|Starlink|落地/i;   // 需要排除的关键字
@@ -361,7 +358,6 @@ function buildCountryProxyGroups(countryList) {
 function buildProxyGroups({
     countryList,
     countryProxyGroups,
-    lowCost,
     defaultProxies,
     defaultProxiesDirect,
     defaultSelector,
@@ -622,7 +618,6 @@ function main(config) {
     const proxyGroups = buildProxyGroups({
         countryList: targetCountryList.map(n => n.replace(/节点$/, '')),
         countryProxyGroups,
-        lowCost,
         defaultProxies,
         defaultProxiesDirect,
         defaultSelector,
