@@ -634,7 +634,7 @@ function buildProxyGroups({
             "icon": "https://cdn.jsdmirror.com/gh/PianCat/OverrideRuleset@master/Icons/Sougou.png",
             "type": "select",
             "proxies": [
-                "REJECT", "全球直连"
+                "全球直连", "REJECT"
             ]
         },
         {

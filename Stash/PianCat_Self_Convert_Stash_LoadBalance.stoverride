@@ -233,8 +233,8 @@ proxy-groups: #!replace
     icon: https://cdn.jsdmirror.com/gh/PianCat/OverrideRuleset@master/Icons/Sougou.png
     type: select
     proxies:
-      - REJECT
       - 全球直连
+      - REJECT
   - name: 全球直连
     icon: https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/Direct.png
     type: select
