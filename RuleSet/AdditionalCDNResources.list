@@ -1,0 +1,17 @@
+# 一些我个人收集的，符合「静态资源」代理组用途的域名
+
+DOMAIN,production.cloudflare.docker.com
+DOMAIN,dl.flathub.org
+DOMAIN-SUFFIX,gvt1.com
+DOMAIN,assets.ppy.sh
+DOMAIN,autoupdate.termius.com
+DOMAIN-REGEX,downloads[1-9].broadcom.com
+DOMAIN,update.ayugram.one
+DOMAIN,sh.nfs.pub
+DOMAIN,download.calibre-ebook.com
+
+# Brave
+DOMAIN,updates-cdn.bravesoftware.com
+DOMAIN,updates.bravesoftware.com
+DOMAIN,dl.brave.com
+DOMAIN,referrals.brave.com
