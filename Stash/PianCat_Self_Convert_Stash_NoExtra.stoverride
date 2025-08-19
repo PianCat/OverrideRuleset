@@ -270,7 +270,6 @@ proxy-groups: #!replace
     include-all: true
     filter: "^(?=.*(日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan|🇯🇵))(?!.*(家宽|家庭|家庭宽带|商宽|商业宽带|星链|Starlink|落地)).*$"
     type: url-test
-    type: url-test
     url: https://cp.cloudflare.com/generate_204
     interval: 180
     tolerance: 20
@@ -280,7 +279,6 @@ proxy-groups: #!replace
     include-all: true
     filter: "^(?=.*(台|新北|彰化|TW|Taiwan|🇹🇼))(?!.*(家宽|家庭|家庭宽带|商宽|商业宽带|星链|Starlink|落地)).*$"
     type: url-test
-    type: url-test
     url: https://cp.cloudflare.com/generate_204
     interval: 180
     tolerance: 20
@@ -289,7 +287,6 @@ proxy-groups: #!replace
     icon: https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/Singapore.png
     include-all: true
     filter: "^(?=.*(新加坡|坡|狮城|SG|Singapore|🇸🇬))(?!.*(家宽|家庭|家庭宽带|商宽|商业宽带|星链|Starlink|落地)).*$"
-    type: url-test
     type: url-test
     url: https://cp.cloudflare.com/generate_204
     interval: 180
