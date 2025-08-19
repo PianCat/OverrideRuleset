@@ -16,31 +16,25 @@ const loadBalance = parseBool(inArg.loadbalance) || false,
     fullConfig = parseBool(inArg.full) || false,
     keepAliveEnabled = parseBool(inArg.keepalive) || false;
 
-function buildBaseLists({ landing, lowCost, countryInfo }) {
+function buildBaseLists({ landing, countryInfo }) {
     const countryGroupNames = countryInfo
         .filter(item => item.count > 2)
         .map(item => item.country + "节点");
 
     // defaultSelector (节点选择 组里展示的候选) 
-    // 故障转移, 落地节点(可选), 各地区节点, 低倍率节点(可选), 手动切换, DIRECT
+    // 故障转移, 落地节点(可选), 各地区节点, 手动切换, DIRECT
     const selector = ["故障转移"]; // 把 fallback 放在最前
     if (landing) selector.push("落地节点");
     selector.push(...countryGroupNames);
-    if (lowCost) selector.push("低倍率节点");
     selector.push("手动切换", "DIRECT");
 
     // defaultProxies (各分类策略引用) 
-    // 节点选择, 各地区节点, 低倍率节点(可选), 手动切换, 全球直连
+    // 节点选择, 各地区节点, 手动切换, 全球直连
     const defaultProxies = ["节点选择", ...countryGroupNames];
-    if (lowCost) defaultProxies.push("低倍率节点");
     defaultProxies.push("手动切换", "全球直连");
 
     // direct 优先的列表
     const defaultProxiesDirect = ["全球直连", ...countryGroupNames, "节点选择", "手动切换"]; // 直连优先
-    if (lowCost) {
-        // 在直连策略里低倍率次于地区、早于节点选择
-        defaultProxiesDirect.splice(1 + countryGroupNames.length, 0, "低倍率节点");
-    }
 
     const defaultFallback = [];
     if (landing) defaultFallback.push("落地节点");
@@ -274,17 +268,7 @@ function parseBool(value) {
     return false;
 }
 
-function hasLowCost(config) {
-    // 检查是否有低倍率节点
-    const proxies = config["proxies"];
-    const lowCostRegex = new RegExp(/0\.[0-5]|低倍率|省流|大流量|实验性/, 'i');
-    for (const proxy of proxies) {
-        if (lowCostRegex.test(proxy.name)) {
-            return true;
-        }
-    }
-    return false;
-}
+// 移除 hasLowCost 函数，因为我们不再需要低倍率节点功能
 
 function parseCountries(config) {
     const proxies = config.proxies || [];
@@ -354,7 +338,7 @@ function buildCountryProxyGroups(countryList) {
                 "icon": countriesMeta[country].icon,
                 "include-all": true,
                 "filter": pattern,
-                "exclude-filter": "(?i)家宽|家庭|家庭宽带|商宽|商业宽带|星链|Starlink|落地|0\.[0-5]|低倍率|省流|大流量|实验性",
+                "exclude-filter": "(?i)家宽|家庭|家庭宽带|商宽|商业宽带|星链|Starlink|落地",
                 "type": (loadBalance) ? "load-balance" : "url-test",
             };
 
@@ -613,22 +597,14 @@ function buildProxyGroups({
                 "REJECT", "全球直连"
             ]
         },
-        (lowCost) ? {
-            "name": "低倍率节点",
-            "icon": "https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/Lab.png",
-            "type": "url-test",
-            "url": "https://cp.cloudflare.com/generate_204",
-            "include-all": true,
-            "filter": "(?i)0\.[0-5]|低倍率|省流|大流量|实验性"
-        } : null,
+        // 移除低倍率节点组
         ...countryProxyGroups
     ].filter(Boolean); // 过滤掉 null 值
 }
 
 function main(config) {
-    // 解析地区与低倍率信息
+    // 解析地区信息
     const countryInfo = parseCountries(config); // [{ country, count }]
-    const lowCost = hasLowCost(config);
 
     // 构建基础数组
     const {
@@ -637,7 +613,7 @@ function main(config) {
         defaultSelector,
         defaultFallback,
         countryGroupNames: targetCountryList
-    } = buildBaseLists({ landing, lowCost, countryInfo });
+    } = buildBaseLists({ landing, countryInfo });
 
     // 为地区构建对应的 url-test / load-balance 组
     const countryProxyGroups = buildCountryProxyGroups(targetCountryList.map(n => n.replace(/节点$/, '')));
