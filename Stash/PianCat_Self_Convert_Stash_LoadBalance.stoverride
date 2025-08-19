@@ -250,8 +250,7 @@ proxy-groups: #!replace
   - name: 香港节点
     icon: https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/Hong_Kong.png
     include-all: true
-    filter: (?i)香港|港|HK|hk|Hong Kong|HongKong|hongkong|🇭🇰
-    exclude-filter: (?i)家宽|家庭|家庭宽带|商宽|商业宽带|星链|Starlink|落地
+    filter: "^(?=.*(香港|港|HK|hk|Hong Kong|HongKong|hongkong|🇭🇰))(?!.*(家宽|家庭|家庭宽带|商宽|商业宽带|星链|Starlink|落地)).*$"
     type: url-test
     url: https://cp.cloudflare.com/generate_204
     interval: 180
@@ -260,8 +259,7 @@ proxy-groups: #!replace
   - name: 美国节点
     icon: https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/United_States.png
     include-all: true
-    filter: (?i)美国|美|US|United States|🇺🇸
-    exclude-filter: (?i)家宽|家庭|家庭宽带|商宽|商业宽带|星链|Starlink|落地
+    filter: "^(?=.*(美国|美|US|United States|🇺🇸))(?!.*(家宽|家庭|家庭宽带|商宽|商业宽带|星链|Starlink|落地)).*$"
     type: url-test
     url: https://cp.cloudflare.com/generate_204
     interval: 180
@@ -270,8 +268,8 @@ proxy-groups: #!replace
   - name: 日本节点
     icon: https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/Japan.png
     include-all: true
-    filter: (?i)日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan|🇯🇵
-    exclude-filter: (?i)家宽|家庭|家庭宽带|商宽|商业宽带|星链|Starlink|落地
+    filter: "^(?=.*(日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan|🇯🇵))(?!.*(家宽|家庭|家庭宽带|商宽|商业宽带|星链|Starlink|落地)).*$"
+    type: url-test
     type: url-test
     url: https://cp.cloudflare.com/generate_204
     interval: 180
@@ -280,8 +278,8 @@ proxy-groups: #!replace
   - name: 台湾节点
     icon: https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/Taiwan.png
     include-all: true
-    filter: (?i)台|新北|彰化|TW|Taiwan|🇹🇼
-    exclude-filter: (?i)家宽|家庭|家庭宽带|商宽|商业宽带|星链|Starlink|落地
+    filter: "^(?=.*(台|新北|彰化|TW|Taiwan|🇹🇼))(?!.*(家宽|家庭|家庭宽带|商宽|商业宽带|星链|Starlink|落地)).*$"
+    type: url-test
     type: url-test
     url: https://cp.cloudflare.com/generate_204
     interval: 180
@@ -290,8 +288,8 @@ proxy-groups: #!replace
   - name: 新加坡节点
     icon: https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/Singapore.png
     include-all: true
-    filter: (?i)新加坡|坡|狮城|SG|Singapore|🇸🇬
-    exclude-filter: (?i)家宽|家庭|家庭宽带|商宽|商业宽带|星链|Starlink|落地
+    filter: "^(?=.*(新加坡|坡|狮城|SG|Singapore|🇸🇬))(?!.*(家宽|家庭|家庭宽带|商宽|商业宽带|星链|Starlink|落地)).*$"
+    type: url-test
     type: url-test
     url: https://cp.cloudflare.com/generate_204
     interval: 180
@@ -300,8 +298,7 @@ proxy-groups: #!replace
   - name: 其他节点
     icon: https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/Global.png
     include-all: true
-    filter: (?i).+
-    exclude-filter: (?i)(家宽|家庭|家庭宽带|商宽|商业宽带|星链|Starlink|落地|香港|港|HK|hk|Hong Kong|HongKong|hongkong|🇭🇰|台|新北|彰化|TW|Taiwan|🇹🇼|新加坡|坡|狮城|SG|Singapore|🇸🇬|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan|🇯🇵|美国|美|US|United States|🇺🇸)
+    filter: "^(?!.*(家宽|家庭|家庭宽带|商宽|商业宽带|星链|Starlink|落地|香港|港|HK|hk|Hong Kong|HongKong|hongkong|🇭🇰|台|新北|彰化|TW|Taiwan|🇹🇼|新加坡|坡|狮城|SG|Singapore|🇸🇬|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan|🇯🇵|美国|美|US|United States|🇺🇸)).*$"
     type: select
   - name: GLOBAL
     icon: https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/Global.png
