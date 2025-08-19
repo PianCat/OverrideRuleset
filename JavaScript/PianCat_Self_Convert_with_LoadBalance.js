@@ -17,9 +17,21 @@ const loadBalance = parseBool(inArg.loadbalance) || false,
     keepAliveEnabled = parseBool(inArg.keepalive) || false;
 
 function buildBaseLists({ landing, countryInfo }) {
-    const countryGroupNames = countryInfo
-        .filter(item => item.count > 2)
-        .map(item => item.country + "节点");
+    // 将其他节点组移到最后，对主要国家节点保持数量要求，但"其他"节点不设数量限制
+    const sortedCountryInfo = countryInfo
+        .filter(item => {
+            // 如果是"其他"节点组，只要有节点就保留
+            if (item.country === "其他") return item.count > 0;
+            // 其他国家节点需要大于等于2个节点
+            return item.count >= 2;
+        })
+        .sort((a, b) => {
+            if (a.country === "其他") return 1;
+            if (b.country === "其他") return -1;
+            return 0;
+        });
+    
+    const countryGroupNames = sortedCountryInfo.map(item => item.country + "节点");
 
     // defaultSelector (节点选择 组里展示的候选) 
     // 故障转移, 落地节点(可选), 各地区节点, 手动切换, DIRECT
@@ -253,7 +265,7 @@ const countriesMeta = {
     pattern: "(?i)美国|美|US|United States|🇺🇸",
         icon: "https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/United_States.png"
     },
-    "其他节点": {
+    "其他": {
     pattern: "(?i).+",
         icon: "https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/Global.png"
     },
@@ -273,6 +285,9 @@ function parseCountries(config) {
 
     // 用来累计各国节点数
     const countryCounts = Object.create(null);
+    
+    // 记录已处理的节点名称
+    const processedNodes = new Set();
 
     // 构建地区正则表达式，去掉 (?i) 前缀
     const compiledRegex = {};
@@ -287,6 +302,9 @@ function parseCountries(config) {
     for (const proxy of proxies) {
         const name = proxy.name || '';
 
+        // 如果节点已经被处理过，则跳过
+        if (processedNodes.has(name)) continue;
+
         // 过滤掉不想统计的 ISP 节点
         if (ispRegex.test(name)) continue;
 
@@ -298,14 +316,16 @@ function parseCountries(config) {
         for (const country of mainCountries) {
             if (compiledRegex[country] && compiledRegex[country].test(name)) {
                 countryCounts[country] = (countryCounts[country] || 0) + 1;
+                processedNodes.add(name); // 记录已处理的节点
                 matched = true;
                 break;
             }
         }
         
-        // 如果没有匹配到主要国家，则归入其他节点类
+        // 如果是非 ISP 节点且未匹配到主要国家，则归入其他节点类
         if (!matched) {
-            countryCounts["其他节点"] = (countryCounts["其他节点"] || 0) + 1;
+            countryCounts["其他"] = (countryCounts["其他"] || 0) + 1;
+            processedNodes.add(name); // 记录已处理的节点
         }
     }
 
@@ -322,6 +342,21 @@ function parseCountries(config) {
 function buildCountryProxyGroups(countryList) {
     // 获取实际存在的地区列表
     const countryProxyGroups = [];
+    let otherGroupConfig = null;
+    
+    // 构建主要国家/地区的排除规则
+    const mainCountriesPattern = [
+        // 香港
+        "香港|港|HK|hk|Hong Kong|HongKong|hongkong|🇭🇰",
+        // 台湾
+        "台|新北|彰化|TW|Taiwan|🇹🇼",
+        // 新加坡
+        "新加坡|坡|狮城|SG|Singapore|🇸🇬",
+        // 日本
+        "日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan|🇯🇵",
+        // 美国
+        "美国|美|US|United States|🇺🇸"
+    ].join("|");
 
     // 为实际存在的地区创建节点组
     for (const country of countryList) {
@@ -329,17 +364,24 @@ function buildCountryProxyGroups(countryList) {
         if (countriesMeta[country]) {
             const groupName = `${country}节点`;
             const pattern = countriesMeta[country].pattern;
-
+            
+            // 根据是否是"其他"节点组来决定过滤规则和类型
+            const isOtherGroup = country === "其他";
+            const excludeFilter = isOtherGroup
+                ? `(?i)(家宽|家庭|家庭宽带|商宽|商业宽带|星链|Starlink|落地|${mainCountriesPattern})`
+                : "(?i)家宽|家庭|家庭宽带|商宽|商业宽带|星链|Starlink|落地";
+            
             const groupConfig = {
                 "name": groupName,
                 "icon": countriesMeta[country].icon,
                 "include-all": true,
                 "filter": pattern,
-                "exclude-filter": "(?i)家宽|家庭|家庭宽带|商宽|商业宽带|星链|Starlink|落地",
-                "type": (loadBalance) ? "load-balance" : "url-test",
+                "exclude-filter": excludeFilter,
+                "type": isOtherGroup ? "select" : (loadBalance ? "load-balance" : "url-test"),
             };
 
-            if (!loadBalance) {
+            // 只有非"其他"节点组且非负载均衡时才添加延迟测试配置
+            if (!isOtherGroup && !loadBalance) {
                 Object.assign(groupConfig, {
                     "url": "https://cp.cloudflare.com/generate_204",
                     "interval": 180,
@@ -348,8 +390,18 @@ function buildCountryProxyGroups(countryList) {
                 });
             }
 
-            countryProxyGroups.push(groupConfig);
+            // 如果是其他节点组，先保存起来
+            if (isOtherGroup) {
+                otherGroupConfig = groupConfig;
+            } else {
+                countryProxyGroups.push(groupConfig);
+            }
         }
+    }
+
+    // 如果存在其他节点组，添加到最后
+    if (otherGroupConfig) {
+        countryProxyGroups.push(otherGroupConfig);
     }
 
     return countryProxyGroups;
