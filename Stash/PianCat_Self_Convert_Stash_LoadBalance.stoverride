@@ -104,18 +104,6 @@ proxy-groups: #!replace
     icon: https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/Bot.png
     type: select
     proxies: *a1
-  - name: 加密货币
-    icon: https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/Cryptocurrency_3.png
-    type: select
-    proxies: *a1
-  - name: PayPal
-    icon: https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/PayPal.png
-    type: select
-    proxies: *a1
-  - name: Telegram
-    icon: https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/Telegram.png
-    type: select
-    proxies: *a1
   - name: Microsoft
     icon: https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/Microsoft.png
     type: select
@@ -126,6 +114,45 @@ proxy-groups: #!replace
     proxies: *a1
   - name: Google
     icon: https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/Google_Search.png
+    type: select
+    proxies: *a1
+  - name: Telegram
+    icon: https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/Telegram.png
+    type: select
+    proxies: *a1
+  - name: Twitter(X)
+    icon: https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/Twitter.png
+    type: select
+    proxies: *a1
+  - name: E-Hentai
+    icon: https://cdn.jsdmirror.com/gh/PianCat/OverrideRuleset@master/Icons/Ehentai.png
+    type: select
+    proxies: *a1
+  - name: PornSite
+    icon: https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/Pornhub.png
+    type: select
+    proxies: *a1
+  - name: 学术资源
+    icon: https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/Scholar.png
+    type: select
+    proxies:
+      - 节点选择
+      - 手动切换
+      - 全球直连
+  - name: 开发者资源
+    icon: https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/GitHub.png
+    type: select
+    proxies: *a1
+  - name: 游戏平台
+    icon: https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/Game.png
+    type: select
+    proxies: *a1
+  - name: 加密货币
+    icon: https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/Cryptocurrency_3.png
+    type: select
+    proxies: *a1
+  - name: PayPal
+    icon: https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/PayPal.png
     type: select
     proxies: *a1
   - name: YouTube
@@ -144,10 +171,6 @@ proxy-groups: #!replace
     icon: https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/TikTok.png
     type: select
     proxies: *a1
-  - name: E-Hentai
-    icon: https://cdn.jsdmirror.com/gh/PianCat/OverrideRuleset@master/Icons/Ehentai.png
-    type: select
-    proxies: *a1
   - name: 巴哈姆特
     icon: https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/Bahamut.png
     type: select
@@ -163,10 +186,6 @@ proxy-groups: #!replace
       - 全球直连
       - 台湾节点
       - 香港节点
-  - name: Twitter(X)
-    icon: https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/Twitter.png
-    type: select
-    proxies: *a1
   - name: 新浪微博
     icon: https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/Weibo.png
     type: select
@@ -181,25 +200,6 @@ proxy-groups: #!replace
       - 其他节点
       - 节点选择
       - 手动切换
-  - name: 学术资源
-    icon: https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/Scholar.png
-    type: select
-    proxies:
-      - 节点选择
-      - 手动切换
-      - 全球直连
-  - name: 开发者资源
-    icon: https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/GitHub.png
-    type: select
-    proxies: *a1
-  - name: PornSite
-    icon: https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/Pornhub.png
-    type: select
-    proxies: *a1
-  - name: 游戏平台
-    icon: https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/Game.png
-    type: select
-    proxies: *a1
   - name: 测速服务
     icon: https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/Speedtest.png
     type: select
@@ -315,25 +315,25 @@ proxy-groups: #!replace
       - 故障转移
       - 静态资源
       - 人工智能
-      - 加密货币
-      - PayPal
-      - Telegram
       - Microsoft
       - Apple
       - Google
+      - Telegram
+      - Twitter(X)
+      - E-Hentai
+      - PornSite
+      - 学术资源
+      - 开发者资源
+      - 游戏平台
+      - 加密货币
+      - PayPal
       - YouTube
       - Netflix
       - Spotify
       - TikTok
-      - E-Hentai
       - 巴哈姆特
       - 哔哩哔哩
-      - Twitter(X)
       - 新浪微博
-      - 学术资源
-      - 开发者资源
-      - PornSite
-      - 游戏平台
       - 测速服务
       - FCM推送
       - SSH(22端口)

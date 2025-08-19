@@ -477,24 +477,6 @@ function buildProxyGroups({
             "proxies": defaultProxies
         },
         {
-            "name": "加密货币",
-            "icon": "https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/Cryptocurrency_3.png",
-            "type": "select",
-            "proxies": defaultProxies
-        },
-        {
-            "name": "PayPal",
-            "icon": "https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/PayPal.png",
-            "type": "select",
-            "proxies": defaultProxies
-        },
-        {
-            "name": "Telegram",
-            "icon": "https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/Telegram.png",
-            "type": "select",
-            "proxies": defaultProxies
-        },
-        {
             "name": "Microsoft",
             "icon": "https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/Microsoft.png",
             "type": "select",
@@ -509,6 +491,62 @@ function buildProxyGroups({
         {
             "name": "Google",
             "icon": "https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/Google_Search.png",
+            "type": "select",
+            "proxies": defaultProxies
+        },
+        {
+            "name": "Telegram",
+            "icon": "https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/Telegram.png",
+            "type": "select",
+            "proxies": defaultProxies
+        },
+        {
+            "name": "Twitter(X)",
+            "icon": "https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/Twitter.png",
+            "type": "select",
+            "proxies": defaultProxies
+        },
+        {
+            "name": "E-Hentai",
+            "icon": "https://cdn.jsdmirror.com/gh/PianCat/OverrideRuleset@master/Icons/Ehentai.png",
+            "type": "select",
+            "proxies": defaultProxies
+        },
+        {
+            "name": "PornSite",
+            "icon": "https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/Pornhub.png",
+            "type": "select",
+            "proxies": defaultProxies,
+        },
+        {
+            "name": "学术资源",
+            "icon": "https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/Scholar.png",
+            "type": "select",
+            "proxies": [
+                "节点选择", "手动切换", "全球直连"
+            ]
+        },
+        {
+            "name": "开发者资源",
+            "icon": "https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/GitHub.png",
+            "type": "select",
+            "proxies": defaultProxies
+        },
+        {
+            "name": "游戏平台",
+            "icon": "https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/Game.png",
+            "type": "select",
+            "proxies": defaultProxies,
+        },
+        {
+            "name": "加密货币",
+            "icon": "https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/Cryptocurrency_3.png",
+            "type": "select",
+            "proxies": defaultProxies
+        },
+        {
+            "name": "PayPal",
+            "icon": "https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/PayPal.png",
             "type": "select",
             "proxies": defaultProxies
         },
@@ -537,12 +575,6 @@ function buildProxyGroups({
             "proxies": defaultProxies
         },
         {
-            "name": "E-Hentai",
-            "icon": "https://cdn.jsdmirror.com/gh/PianCat/OverrideRuleset@master/Icons/Ehentai.png",
-            "type": "select",
-            "proxies": defaultProxies
-        },
-        {
             "name": "巴哈姆特",
             "icon": "https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/Bahamut.png",
             "type": "select",
@@ -555,43 +587,11 @@ function buildProxyGroups({
             "proxies": (hasTW && hasHK) ? ["全球直连", "台湾节点", "香港节点"] : defaultProxiesDirect
         },
         {
-            "name": "Twitter(X)",
-            "icon": "https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/Twitter.png",
-            "type": "select",
-            "proxies": defaultProxies
-        },
-        {
             "name": "新浪微博",
             "icon": "https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/Weibo.png",
             "type": "select",
             "include-all": true,
             "proxies": defaultProxiesDirect
-        },
-        {
-            "name": "学术资源",
-            "icon": "https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/Scholar.png",
-            "type": "select",
-            "proxies": [
-                "节点选择", "手动切换", "全球直连"
-            ]
-        },
-        {
-            "name": "开发者资源",
-            "icon": "https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/GitHub.png",
-            "type": "select",
-            "proxies": defaultProxies
-        },
-        {
-            "name": "PornSite",
-            "icon": "https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/Pornhub.png",
-            "type": "select",
-            "proxies": defaultProxies,
-        },
-        {
-            "name": "游戏平台",
-            "icon": "https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/Game.png",
-            "type": "select",
-            "proxies": defaultProxies,
         },
         {
             "name": "测速服务",
