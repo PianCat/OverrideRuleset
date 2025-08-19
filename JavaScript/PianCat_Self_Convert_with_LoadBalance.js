@@ -96,7 +96,7 @@ const ruleProviders = {
     "FurryBar": {
         "type": "http", "behavior": "classical", "format": "text", "interval": 86400,
         "url": "https://cdn.jsdmirror.com/gh/PianCat/OverrideRuleset@master/RuleSet/FurryBar.list",
-        "path": "./ruleset/EHentai.list"
+        "path": "./ruleset/FurryBar.list"
     },
     "SteamFix": {
         "type": "http", "behavior": "classical", "format": "text", "interval": 86400,
