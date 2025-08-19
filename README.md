@@ -37,6 +37,10 @@
 
 需要注意，Mihomo Party 在默认设置下还会接管 DNS 和 SNI（域名嗅探），需要手动在设置中关闭「控制 DNS 设置」和「控制域名嗅探」两个选项。
 
+### Stash
+
+1. 在 `覆写` 中，下载覆写文件 `https://github.com/PianCat/OverrideRuleset/raw/refs/heads/master/Stash/PianCat_Self_Convert_Stash_LoadBalance.stoverride`
+
 ### SubStore
 
 参考[最速 Substore 订阅管理指南](https://blog.l3zc.com/2025/03/clash-subscription-convert/)。
