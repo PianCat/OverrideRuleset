@@ -148,6 +148,8 @@ const rules = [
     "RULE-SET,SpeedTest,测速服务",
     "DOMAIN,services.googleapis.cn,Play商店修复",
     "GEOSITE,GOOGLE-PLAY@CN,全球直连",
+    "GEOSITE,PAYPAL@CN,全球直连",
+    "GEOSITE,PAYPAL,PayPal",
     "GEOSITE,APPLE@CN,全球直连",
     "GEOSITE,APPLE,Apple",
     "GEOSITE,TELEGRAM,Telegram",
@@ -477,6 +479,12 @@ function buildProxyGroups({
         {
             "name": "加密货币",
             "icon": "https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/Cryptocurrency_3.png",
+            "type": "select",
+            "proxies": defaultProxies
+        },
+        {
+            "name": "PayPal",
+            "icon": "https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/PayPal.png",
             "type": "select",
             "proxies": defaultProxies
         },
