@@ -301,8 +301,7 @@ proxy-groups: #!replace
     icon: https://cdn.jsdmirror.com/gh/Koolson/Qure@master/IconSet/Color/Global.png
     include-all: true
     filter: (?i).+
-    exclude-filter: (?i)(家宽|家庭|家庭宽带|商宽|商业宽带|星链|Starlink|落地|香港|港|HK|hk|Hong
-      Kong|HongKong|hongkong|🇭🇰|台|新北|彰化|TW|Taiwan|🇹🇼|新加坡|坡|狮城|SG|Singapore|🇸🇬|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan|🇯🇵|美国|美|US|United
+    exclude-filter: (?i)(家宽|家庭|家庭宽带|商宽|商业宽带|星链|Starlink|落地|香港|港|HK|hk|Hong Kong|HongKong|hongkong|🇭🇰|台|新北|彰化|TW|Taiwan|🇹🇼|新加坡|坡|狮城|SG|Singapore|🇸🇬|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan|🇯🇵|美国|美|US|United
       States|🇺🇸)
     type: select
   - name: GLOBAL
