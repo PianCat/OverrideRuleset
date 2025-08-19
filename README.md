@@ -39,7 +39,7 @@
 
 ### Stash
 
-1. 在 `覆写` 中，下载覆写文件 `https://github.com/PianCat/OverrideRuleset/raw/refs/heads/master/Stash/PianCat_Self_Convert_Stash_LoadBalance.stoverride`
+1. 在 `覆写` 中，下载覆写文件 `https://github.com/PianCat/OverrideRuleset/raw/refs/heads/master/Stash/PianCat_Self_Convert_Stash_NoExtra.stoverride`
 
 ### SubStore
 
